@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Informción</h1>
+<p>
+  <strong>Nombre:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Descripción:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>Cantidad:</strong>
+  <%= @product.quantity %>
+</p>
+
+<p>
+  <strong>Precio:</strong>
+  <%= @product.price %>
+</p>
+
+<p>
+  <strong>Disponible:</strong>
+  <%= @product.available %>
+</p>
+
+<p>
+  <strong>Categoría:</strong>
+  <%= @product.category_id%>
+</p>
+
+<p>
+  <strong>Imagen:</strong>
+  <%= image_tag @product.picture.url, style: 'height:100px; width:100px;'%>
+</p>
+
+<% if user_signed_in? %>
+<%= button_to 'Editar', edit_product_path(@product), method: 'get',:class => 'btn btn-warning' %> <br>
+  <% end%>
+<%= button_to 'Inicio', products_path, method: 'get' ,:class => 'btn btn-primary'%>

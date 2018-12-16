@@ -1,0 +1,6 @@
+<h1>Editar Producto</h1>
+
+<%= render 'form', product: @product %>
+
+<%= button_to 'Mostar', product_path(@product), method: 'get' ,:class => 'btn btn-info'%> <br>
+<%= button_to 'Inicio', products_path, method: 'get' ,:class => 'btn btn-primary'%>

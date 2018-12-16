@@ -1,0 +1,23 @@
+<h1>Resultados Búsqueda</h1>
+
+<%= button_to 'Volver', new_search_path, method: 'get' ,:class => 'btn btn-primary'%>
+
+
+<% if @search.search_products.empty? %>
+
+<p>Sin resultados</p>
+
+<% else %>
+
+<% @search.search_products.each do |c| %>
+
+    <br>
+    <div class="div">
+      <h1><%= c.name %></h1>
+      <p>Precio: <%= c.price %> €</p>
+      <p>Category: <%= c.category_id %></p>
+      <p>ISBN: <%= c.quantity %></p>
+      <p>Disponible: <%= c.available %></p>
+    </div>
+  <% end %>
+<%end %>

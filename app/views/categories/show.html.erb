@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @category.name %>
+</p>
+
+<p>
+  <strong>Descripción:</strong>
+  <%= @category.description %>
+</p>
+
+
+<%= button_to 'Editar', edit_category_path(@category), method: 'get' ,:class => 'btn btn-warning'%> <br>
+<%= button_to 'Inicio', categories_path, method: 'get' ,:class => 'btn btn-primary'%>

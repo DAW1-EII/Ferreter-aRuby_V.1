@@ -1,0 +1,7 @@
+<p>Hola <%= @resource.email %>!</p>
+
+<p>Tu cuenta ha sido bloqueada por superar el número de intentos.</p>
+
+<p>Haz click en el ling para desbloquearla:</p>
+
+<p><%= link_to 'Desbloquea mi cuenta', unlock_url(@resource, unlock_token: @token) %></p>

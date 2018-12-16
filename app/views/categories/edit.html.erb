@@ -1,0 +1,8 @@
+<h1>Editar Categoría</h1>
+
+<%= render 'form', category: @category %>
+
+
+
+<%= button_to 'Mostar', category_path(@category), method: 'get' ,:class => 'btn btn-info'%> <br>
+<%= button_to 'Inicio', categories_path, method: 'get' ,:class => 'btn btn-primary' %>
