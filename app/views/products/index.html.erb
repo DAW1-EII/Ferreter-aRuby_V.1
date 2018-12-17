@@ -1,56 +1,192 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Lista de Productos</h1>
-
-<%= button_to "Búsqueda avanzada", new_search_path, method: 'get', :class => 'btn btn-danger'%>
-<%= form_tag products_path, method: 'get' do %>
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag "Buscar" ,:class => 'btn btn-secondary'%>
-<% end %>
 
 
-<br>
-<%= button_to 'Categorías', categories_path , method: 'get',:class => 'btn btn-primary'%>
-<br>
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Descripción</th>
-      <th>Cantidad</th>
-      <th>Precio</th>
-      <th>Disponible</th>
-      <th>Categoría</th>
-      <th>Imagen</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.description %></td>
-        <td><%= product.quantity %></td>
-        <td><%= product.price %></td>
-        <td><%= product.available %></td>
-        <td><%= product.category.name %></td>
-        <td><%= image_tag product.picture.url, style: 'height:100px; width:100px;'%></td>
-        <td><%= button_to 'Mostar', product_path(product), method: 'get' ,:class => 'btn btn-info'%></td>
-        <% if user_signed_in? %>
-        <td><%= button_to 'Editar', edit_product_path(product), method: 'get' ,:class => 'btn btn-warning'%></td>
-        <td><%= button_to 'Eliminar', product_path(product), method: 'delete', data: { confirm: '¿Estás seguro?' } ,:class => 'btn btn-danger'%></td>
+
+
+
+<div class="container ">
+  <div class="row">
+    <aside class="float-left col-xs-12 col-md-3">
+      <h2 class="text-primary">Filtros</h2>
+
+      <!--Rango de precios -->
+      <div class="card">
+        <article class="card-group-item">
+          <header class="card-header">
+            <h6 class="title"><b>Seleccionar precio</b></h6>
+          </header>
+          <div class="filter-content">
+            <div class="card-body">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label>Mínimo</label>
+                  <input type="number" class="form-control" id="" placeholder="0€">
+                </div>
+                <div class="form-group col-md-6 text-right">
+                  <label>Máximo</label>
+                  <input type="number" class="form-control" placeholder="5000€">
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+
+        <!--Colores de los productos -->
+        <article class="card-group-item">
+          <header class="card-header"><h6 class="title"><b>Seleccionar colores</b></h6></header>
+          <div class="filter-content">
+            <div class="card-body">
+              <label class="btn btn-danger">
+                <input class="" type="checkbox" name="colorines" value="">
+                <span class="form-check-label">Rojo</span>
+              </label>
+              <label class="btn btn-success">
+                <input class="" type="checkbox" name="colorines" value="">
+                <span class="form-check-label">Verde</span>
+              </label>
+              <label class="btn btn-primary">
+                <input class="" type="checkbox" name="colorines" value="">
+                <span class="form-check-label">Azul</span>
+              </label>
+              <label class="btn btn-warning">
+                <input class="" type="checkbox" name="colorines" value="">
+                <span class="form-check-label">Naranja</span>
+              </label>
+              <label class="btn btn-light">
+                <input class="" type="checkbox" name="colorines" value="">
+                <span class="form-check-label">Blanco</span>
+              </label>
+              <label class="btn btn-secondary">
+                <input class="" type="checkbox" name="colorines" value="">
+                <span class="form-check-label">Gris</span>
+              </label>
+              <label class="btn btn-dark">
+                <input class="" type="checkbox" name="colorines" value="">
+                <span class="form-check-label">Negro</span>
+              </label>
+            </div>
+          </div>
+        </article>
+
+        <!--Marcas de los productos -->
+        <article class="card-group-item">
+          <header class="card-header"><h6 class="title"><b>Seleccionar marca</b></h6></header>
+          <div class="filter-content">
+            <div class="card-body">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <form>
+                    <input type="radio" name="marca" value="truper">  Truper<br>
+                    <input type="radio" name="marca" value="bosch">  Bosch<br>
+                    <input type="radio" name="marca" value="stanley">  Stanley<br>
+                    <input type="radio" name="marca" value="argos">  Argos<br>
+                    <input type="radio" name="marca" value="devcon">  Devcon<br>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </aside>
+    <br>
+
+    <div class="container col-xs-12 col-md-9">
+      <!--Productos más vendidos -->
+      <div class="col-xs-6 col-md-12">
+        <h2 class="text-danger">Más vendidos</h2>
+
+
+        <div  class="row alert-heading">
+          <div class="efectoagrandar" class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <p>
+            <h3>Sierra</h3>
+            <%= image_tag image_path("sierra.jpg"), style: 'height:50px; width:50px;'%>
+            <p>80€ (IGIC no incluido)</p>
+            </p>
+          </div>
+
+          <div class="efectoagrandar" class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <p>
+            <h3>Pintura</h3>
+            <%= image_tag image_path("pintura.jpg"), style: 'height:50px; width:50px;'%>
+            <p>10€ (IGIC no incluido)</p>
+            </p>
+          </div>
+
+          <div class="efectoagrandar" class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <p>
+            <h3>Amasador</h3>
+            <%= image_tag image_path("amasadora.jpg"), style: 'height:50px; width:50px;'%>
+            <p>200€ (IGIC no incluido)</p>
+            </p>
+          </div>
+        </div>
+
+
+        <br>
+
+
+        <!--Productos principales-->
+        <div class="col-xs-6 col-md-12">
+          <h2 class="text-success">Productos</h2>
+
+          <table class="table table-sm">
+            <thead>
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Disponible</th>
+              <th scope="col">Categoría</th>
+              <th scope="col">Imagen</th>
+              <th colspan="3"></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <% @products.each do |product| %>
+              <tr>
+                <td><%= product.name %></td>
+                <td><%= product.description %></td>
+                <td><%= product.quantity %></td>
+                <td><%= product.price %></td>
+                <td><%= product.available %></td>
+                <td><%= product.category.name %></td>
+                <td><%= image_tag product.picture.url, style: 'height:100px; width:100px;'%></td>
+                <div class="btn-group mr-2">
+                  <td><%= button_to 'Mostrar', product_path(product), method: 'get' ,:class => 'btn btn-info'%></td>
+                </div>
+                <% if user_signed_in? %>
+                  <div class="btn-group mr-2">
+                    <td><%= button_to 'Editar', edit_product_path(product), method: 'get' ,:class => 'btn btn-warning'%></td>
+                  </div>
+                  <div class="btn-group mr-2">
+                    <td><%= button_to 'Eliminar', product_path(product), method: 'delete', data: { confirm: '¿Estás seguro?' } ,:class => 'btn btn-danger'%></td>
+                  </div>
+                <% end %>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+
+          <br>
+
+          <% if user_signed_in? %>
+            <%= button_to 'Nuevo Producto', new_product_path , method: 'get' ,:class => 'btn btn-success'%> <br>
           <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<% if user_signed_in? %>
-<%= button_to 'Nuevo Producto', new_product_path , method: 'get' ,:class => 'btn btn-success'%> <br>
-  <% end %>
-<%= button_to 'Inicio', home_index_path, method: 'get' ,:class => 'btn btn-primary'%>
+        </div>
 
+      </div>
+    </div>
+
+
+
+  </div>
+
+</div>
 

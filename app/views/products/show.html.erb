@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Informción</h1>
+
 <p>
   <strong>Nombre:</strong>
   <%= @product.name %>
@@ -39,4 +39,3 @@
 <% if user_signed_in? %>
 <%= button_to 'Editar', edit_product_path(@product), method: 'get',:class => 'btn btn-warning' %> <br>
   <% end%>
-<%= button_to 'Inicio', products_path, method: 'get' ,:class => 'btn btn-primary'%>

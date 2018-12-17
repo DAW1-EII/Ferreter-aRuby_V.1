@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Regístrate</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/estilos.css" rel="stylesheet">
+  <script src="http://code.jquery.com/jquery-3.3.1.slim.js" integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+  <script type="text/javascript" src="js/register.js"></script>
+</head>
+
+<body>
+<div class="container col-sm-8">
+  <div class="row mt-5 justify-content-center">
+    <div class="card border-success">
+      <!--Encabezado-->
+      <header class="card-header bg-success">
+        <a href="index.html" class="float-right btn bg-light btn-outline-success mt-1 text-dark">Volver inicio</a>
+        <h4 class="card-title mt-2 text-light"><b>Regístrate</b></h4>
+      </header>
+
+      <!--Cuerpo del formulario-->
+      <article class="card-body">
+        <!--Formulario-->
+        <form method="post" id="registro" novalidate>
+
+          <div class="form-row">
+            <div class="col form-group">
+              <label><b>Nombre</b></label>
+              <input type="text" name="nombre" id="nombre"  class="form-control" placeholder="Obligatorio">
+            </div>
+            <div class="col form-group">
+              <label><b>Apellidos</b></label>
+              <input name="apellidos" id="apellidos" type="text" class="form-control"  placeholder="Obligatorio">
+            </div>
+          </div>
+
+          <!--Correo electrónico-->
+          <div class="form-group">
+            <label><b>Correo electrónico</b></label>
+            <input name="correo" id="correo" type="email" class="form-control"  placeholder="Obligatorio">
+          </div>
+
+          <!--Contraseña-->
+          <div class="form-group">
+            <label><b>Nueva contraseña</b></label>
+            <input name="contrasena" id="contrasena" type="password" class="form-control"  placeholder="Obligatorio">
+          </div>
+
+          <!--Confirmar contraseña-->
+          <div class="form-group">
+            <label><b>Confirmar contraseña nueva</b></label>
+            <input name="confirmarContrasena" id="confirmarContrasena" type="password" class="form-control"  placeholder="Obligatorio">
+          </div>
+
+          <!--DNI-->
+          <div class="form-group">
+            <label><b>DNI</b></label>
+            <input name="dni" id="dni" type="text" class="form-control">
+          </div>
+
+          <!--Teléfono de contacto-->
+          <div class="form-group">
+            <label><b>Teléfono</b></label>
+            <input name=telefono id="telefono" type="text" class="form-control">
+          </div>
+
+          <!--Dirección-->
+          <div class="form-group">
+            <label><b>Dirección</b></label>
+            <input name="direccion" id="direccion" type="text" class="form-control">
+          </div>
+
+          <div class="form-row">
+            <!--Número de la vivienda-->
+            <div class="col form-group">
+              <label><b>Número</b></label>
+              <input name="numero" id="numero" type="text" class="form-control">
+            </div>
+
+            <!--Piso de la vivienda-->
+            <div class="col form-group">
+              <label><b>Piso</b></label>
+              <input name="piso" id="piso" type="text" class="form-control">
+            </div>
+          </div>
+
+          <!--Ciudad-->
+          <div class="form-group">
+            <label><b>Ciudad</b></label>
+            <input  name="ciudad" id="ciudad" type="text" class="form-control">
+          </div>
+
+          <!--Código postal-->
+          <div class="form-group">
+            <label><b>Código postal</b></label>
+            <input name="codigo" type="text" id="codigo" class="form-control">
+          </div>
+          <div>
+            <br>
+            <label>
+              <input type="checkbox" name="checkbox" id="check">
+              <a>He leído y acepto la <a class="text-primary required" href="!#">política de privacidad</a></a>
+            </label>
+          </div>
+          <br>
+
+          <!--Botón para registrarse-->
+          <div>
+            <button type="submit" value="Register" id="enviar" class="btn btn-success btn-block">Registrarse</button>
+          </div>
+
+        </form>
+
+      </article>
+
+      <div class="border-top card-body text-center"> <a>¿Tienes ya una cuenta? <a class="text-primary" href="index.html">Inicia sesión</a></a>
+      </div>
+    </div>
+  </div>
+  <div class="mb-5"></div>
+</div>
+
+</body>
+</html>
