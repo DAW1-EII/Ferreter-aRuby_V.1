@@ -207,6 +207,11 @@
       </header>
     </div>
 
+      <% if user_signed_in? %>
+        <p class="text-rigth">
+          Bienvenido <strong><%= current_user.email %>.</strong>
+        </p>
+      <% end %>
 
     <!-- Barra de navegación -->
     <div class="row" id="down"></div>
@@ -220,13 +225,10 @@
             <ul class="navbar-nav mr-auto col-xs-2 col-sm-3 col-md-6">
               <li class="nav-item active"><%= link_to 'Inicio', home_index_path,class: 'nav-link' %></li>
               <li class="nav-item active"><%= link_to 'Productos', products_path, class: 'nav-link'%></li>
-              <li class="nav-item active"><a href="#ventanaContacto" class="nav-link">Contacto</a></li>
-              <% if user_signed_in? %>
-                Bienvenido <strong><%= current_user.email %>.</strong>
-              <% end %>
+              <li class="nav-item active"><a href="#ventanaContacto" class="nav-link" aria-pressed="true" data-toggle="modal">Contacto</a></li>
+              <li class="nav-item active"><%= link_to 'Búsqueda Avanzada', new_search_path, class: 'nav-link'%></li>
             </ul>
-            <form class="form-inline col-xs-2">
-              <%= button_to "Búsqueda avanzada", new_search_path, method: 'get', :class => 'btn btn-success'%>
+            <form class="form-inline col-xs-3">
               <%= form_tag products_path, method: 'get' do %>
                 <%= text_field_tag :search, params[:search] %>
                 <%= submit_tag "Buscar" ,:class => 'btn btn-dark'%>
