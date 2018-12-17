@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :currentusers
   get 'carrito/compra'
 
   get 'homedosp/index'

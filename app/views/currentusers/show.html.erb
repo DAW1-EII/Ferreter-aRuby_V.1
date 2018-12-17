@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @currentuser.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @currentuser.email %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @currentuser.password %>
+</p>
+
+<p>
+  <strong>Dni:</strong>
+  <%= @currentuser.dni %>
+</p>
+
+<p>
+  <strong>Telephone:</strong>
+  <%= @currentuser.telephone %>
+</p>
+
+<p>
+  <strong>Dir:</strong>
+  <%= @currentuser.dir %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @currentuser.number %>
+</p>
+
+<p>
+  <strong>Cp:</strong>
+  <%= @currentuser.cp %>
+</p>
+
+
+<%= button_to 'Editar', edit_currentuser_path(@currentuser), method: 'get',:class => 'btn btn-warning' %> <br>
+

@@ -1,20 +1,53 @@
-<h1>Resultados Búsqueda</h1>
 
-<% if @search.search_products.empty? %>
 
-<p>Sin resultados</p>
+    <% if @search.search_products.empty? %>
 
-<% else %>
+      <p>Sin resultados</p>
 
-<% @search.search_products.each do |c| %>
+    <% else %>
 
-    <br>
-    <div class="div">
-      <h1><%= c.name %></h1>
-      <p>Precio: <%= c.price %> €</p>
-      <p>Category: <%= c.category_id %></p>
-      <p>ISBN: <%= c.quantity %></p>
-      <p>Disponible: <%= c.available %></p>
+      <% @search.search_products.each do |c| %>
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card rounded-0">
+            <div class="card-header bg-success">
+              <h3 class="mb-0 text-white">Resultados Búsqueda</h3>
+            </div>
+            <div class="card-body">
+              <form class="form" role="form" novalidate="" method="POST">
+                <div class="form-group">
+                  <h2><%= c.name %></h2>
+                </div>
+                <div class="form-group">
+                  <label>Precio:</label>
+                  <%= c.price %> €
+                </div>
+                <div class="form-group">
+                  <label>Categoría:</label>
+                  <%= c.category_id %>
+                </div>
+                <div class="form-group">
+                  <label>Categoría:</label>
+                  <%= c.category_id %>
+                </div>
+                <div class="form-group">
+                  <label>Cantidad:</label>
+                  <%= c.quantity %>
+                </div>
+                <div class="form-group">
+                  <label>Disponible:</label>
+                  <%= c.available %>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-<%end %>
+  </div>
+</div>
+              <% end %>
+            <%end %>

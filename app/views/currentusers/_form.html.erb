@@ -1,0 +1,58 @@
+<%= form_with(model: currentuser, local: true) do |form| %>
+  <% if currentuser.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(currentuser.errors.count, "error") %> prohibited this currentuser from being saved:</h2>
+
+      <ul>
+      <% currentuser.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :currentuser_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :currentuser_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.text_field :password, id: :currentuser_password %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dni %>
+    <%= form.text_field :dni, id: :currentuser_dni %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telephone %>
+    <%= form.text_field :telephone, id: :currentuser_telephone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dir %>
+    <%= form.text_field :dir, id: :currentuser_dir %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number %>
+    <%= form.text_field :number, id: :currentuser_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cp %>
+    <%= form.text_field :cp, id: :currentuser_cp %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Crear' ,:class => 'btn btn-success'%>
+
+  </div>
+<% end %>

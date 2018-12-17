@@ -15,10 +15,20 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body{
-  background-color: whitesmoke;
+#color{
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 18px;
+
 }
 
 #down{
   margin-top: 20px;
 }
+
+#titulo{
+  font-size: 25px;
+}
+

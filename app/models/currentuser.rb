@@ -1,0 +1,2 @@
+class Currentuser < ApplicationRecord
+end

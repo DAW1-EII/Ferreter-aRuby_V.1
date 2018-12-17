@@ -27,7 +27,7 @@
 
   </head>
 
-  <body style="font-family: 'Ubuntu',sans-serif">
+  <body id="color" style="font-family: 'Ubuntu',sans-serif">
   <% if notice %>
     <p class="alert alert-success"><%= notice %></p>
   <% end %>
@@ -46,11 +46,11 @@
 
         <div class="row" id="down">
           <div class="col-xs-12 col-md-3 d-none d-md-block">
-            <%= image_tag image_path("ferrobox2.jpg"), style: 'height:90px; width:90px;'%>
+            <%= image_tag image_path("ferrobox2.jpg"), style: 'height:110px; width:110px;'%>
           </div>
           <div class="col-xs-12 col-md-6">
             <div class="row" id="down"></div>
-            <h1 class="text-center" id="cabecera">Ferretería El Cruce</h1>
+            <h1 class="text-center" id="titulo">Ferretería El Cruce</h1>
           </div>
           <div class="col-xs-12 col-md-3">
             <ul class="nav justify-content-end">
@@ -83,15 +83,19 @@
                         <li>Disfruta de tus cuentas</li>
                       </ul>
                     </div>
-                    <div class="row">
+
+
+                    <div class="col-xs-12 col-md-6">
+                      <ul class="nav justify-content-end">
                       <% if user_signed_in? %>
                         <br>
-                        <%= button_to 'Editar perfil', edit_user_registration_path, method: 'get', :class => 'btn btn-primary'%>
-                        <%= button_to "Salir", destroy_user_session_path, method: :delete, :class => 'btn btn-primary'%>
+                          <li class="nav-item disabled"><%= button_to 'Editar perfil', edit_user_registration_path, method: 'get', :class => 'btn btn-primary '%></li>
+                          <li class="nav-item disabled"><%= button_to "Salir", destroy_user_session_path, method: :delete, :class => 'btn btn-primary '%></li>
                       <% else %>
-                        <%= button_to "Registrarse", new_user_registration_path, method: 'get',:class => 'btn btn-primary'%>
-                        <%= button_to  "Entrar", new_user_session_path, method: 'get',:class => 'btn btn-primary'%>
+                          <li class="nav-item disabled"><%= button_to "Registrarse", new_user_registration_path, method: 'get',:class => 'btn btn-primary '%></li>
+                          <li class="nav-item disabled"><%= button_to  "Entrar", new_user_session_path, method: 'get',:class => 'btn btn-primary'%></li>
                       <% end %>
+                      </ul>
                     </div>
                     <!-- <a href="index.html" class="btn btn-lg btn-success btn-block" role="button" aria-pressed="true">Salir</a> -->
 
@@ -207,11 +211,20 @@
       </header>
     </div>
 
-      <% if user_signed_in? %>
-        <p class="text-rigth">
-          Bienvenido <strong><%= current_user.email %>.</strong>
-        </p>
-      <% end %>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-10">
+
+            </div>
+            <div class="col-sm-2">
+                <% if user_signed_in? %>
+                  Bienvenido <strong><%= current_user.email %>.</strong>
+                <% else %>
+                  <strong>Usted no se ha registrado</strong>
+                <% end %>
+            </div>
+          </div>
+        </div>
 
     <!-- Barra de navegación -->
     <div class="row" id="down"></div>
@@ -221,14 +234,17 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbar">
+          <div class="collapse navbar-collapse " id="navbar">
             <ul class="navbar-nav mr-auto col-xs-2 col-sm-3 col-md-6">
               <li class="nav-item active"><%= link_to 'Inicio', home_index_path,class: 'nav-link' %></li>
               <li class="nav-item active"><%= link_to 'Productos', products_path, class: 'nav-link'%></li>
               <li class="nav-item active"><a href="#ventanaContacto" class="nav-link" aria-pressed="true" data-toggle="modal">Contacto</a></li>
               <li class="nav-item active"><%= link_to 'Búsqueda Avanzada', new_search_path, class: 'nav-link'%></li>
+              <% if user_signed_in? %>
+                <li class="nav-item active"><%= link_to 'Usuarios', currentusers_path, class: 'nav-link'%></li>
+              <% end %>
             </ul>
-            <form class="form-inline col-xs-3">
+            <form class="form-inline col-sm-4" id="buscador">
               <%= form_tag products_path, method: 'get' do %>
                 <%= text_field_tag :search, params[:search] %>
                 <%= submit_tag "Buscar" ,:class => 'btn btn-dark'%>
@@ -248,6 +264,7 @@
 
     <%= yield %>
 
+    <br>
   <!-- Contenedor pie de página -->
   <footer class="page-footer font-small blue-grey lighten-5">
     <div class="container bg-success" style="border-radius: 12px">
@@ -282,16 +299,13 @@
           <h6 class="text-uppercase font-weight-bold">Enlaces</h6>
           <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
           <p>
-            <a class="dark-grey-text" href="#!">Mi cuenta</a>
+          <a class="nav-link" href="#ventanaLogin" aria-pressed="true" data-toggle="modal">Mi cuenta</a>
           </p>
           <p>
-            <a class="dark-grey-text" href="registro.html.erb">Regístrate</a>
+          <%= link_to 'Regítrate', new_user_registration_path, class: 'nav-link'%>
           </p>
           <p>
-            <a class="dark-grey-text" href="productos.html.erb">Productos</a>
-          </p>
-          <p>
-            <a class="dark-grey-text" href="#!">Ayuda</a>
+          <%= link_to 'Productos', products_path, class: 'nav-link'%>
           </p>
         </div>
 
@@ -305,8 +319,7 @@
         </div>
       </div>
     </div>
-    <div class="footer-copyright text-center text-black-50 py-3">© 2018 Copyright:
-      <a class="dark-grey-text" href="index.html.erb"> Ferretería El Cruce</a>
+    <div class="footer-copyright text-center text-black-50 py-3">© 2018 Copyright: <%= link_to 'Ferretería El Cruce', home_index_path, class: 'nav-link'%>
     </div>
   </footer>
 

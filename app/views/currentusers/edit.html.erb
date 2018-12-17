@@ -1,0 +1,6 @@
+<h1>Editar Usuario</h1>
+
+<%= render 'form', currentuser: @currentuser %>
+
+
+<%= button_to 'Mostrar', currentuser_path(@currentuser), method: 'get' ,:class => 'btn btn-info'%> <br>
