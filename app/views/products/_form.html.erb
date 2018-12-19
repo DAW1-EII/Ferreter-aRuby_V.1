@@ -1,52 +1,73 @@
+
+
 <%= form_with(model: product, local: true) do |form| %>
   <% if product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
       <ul>
-      <% product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :product_name %>
-  </div>
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card rounded-0">
+            <div class="card-header bg-success">
+              <h3 class="mb-0 text-white">Información</h3>
+            </div>
+            <div class="card-body">
+              <form class="form" role="form" novalidate="" method="POST">
+                <div class="form-group">
+                  <%= form.label :name %>
+                  <%= form.text_field :name, id: :product_name %>
+                </div>
+                <div class="form-group">
+                  <%= form.label :description %>
+                  <%= form.text_area :description, id: :product_description %>
+                </div>
+                <div class="form-group">
+                  <%= form.label :quantity %>
+                  <%= form.number_field :quantity, id: :product_quantity %>
+                </div>
+                <div class="form-group">
+                  <%= form.label :price %>
+                  <%= form.text_field :price, id: :product_price %>
+                </div>
+                <div class="form-group">
+                  <%= form.label :available %>
+                  <%= form.check_box :available, id: :product_available %>
+                </div>
+                <div class="form-group">
+                  <%= form.label :category_id %>
+                  <%= form.text_field :category_id, id: :product_category %>
+                </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :product_description %>
-  </div>
+                <div class="form-group">
+                  <%= form.label :picture %>
+                  <%= form.file_field :picture%>
+                </div>
 
-  <div class="field">
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity, id: :product_quantity %>
-  </div>
 
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price, id: :product_price %>
+                <div class="actions">
+                  <%= form.submit 'Enviar' ,:class => 'btn btn-success'%>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="field">
-    <%= form.label :available %>
-    <%= form.check_box :available, id: :product_available %>
-  </div>
-
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.text_field :category_id, id: :product_category %>
-  </div>
-
-  <div class="field">
-    <%= form.label :picture %>
-    <%= form.file_field :picture%>
-  </div>
-
-  <div class="actions">
-    <%= form.submit 'Enviar' ,:class => 'btn btn-success'%>
-  </div>
 <% end %>
+
+
+
